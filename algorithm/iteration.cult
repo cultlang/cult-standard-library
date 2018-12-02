@@ -1,0 +1,29 @@
+; This Source Code Form is subject to the terms of the Mozilla Public
+; License, v. 2.0. If a copy of the MPL was not distributed with this
+; file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+; Assumes the following is provided by the implementation:
+; (define begin (multimethod))
+; (define increment (multimethod))
+; (define current (multimethod))
+; (define List (Type ...))
+; (define append (multimethod))
+; (define append (function ((list List) item) ...))
+
+(define map (function (enumerable mapper)
+  (define result (List))
+  (define state (begin enumerable))
+  (while (increment state)
+    (append result (mapper (current state)))
+  )
+  result
+))
+
+
+(define sum (function (enumerable)
+  (define result (variable 0))
+  (define state (begin enumerable))
+  (while (increment state)
+    (set result (+ result (current state)))
+  )
+))
