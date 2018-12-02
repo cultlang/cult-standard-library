@@ -1,0 +1,3 @@
+This is the pure cult standard library which at the moment assumes it is being used in conjunction with the bootstrap interpreter.
+
+For the time being the interpreter expects to find this library by using the `CULT_STANDARD_LIBRARY` environment variable.
